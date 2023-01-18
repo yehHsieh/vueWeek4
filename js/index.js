@@ -13,17 +13,12 @@ const app = {
 
     methods: {
         login() {
-            const emailInput = document.querySelector("#username");
-            const passInput = document.querySelector("#password");
-            const username = emailInput.value;
-            const password = passInput.value;
             const url = "https://vue3-course-api.hexschool.io/v2";
             const path = "practiceapi";
             const user = {
                 username,
                 password
             };
-            console.log(user)
             axios.post(`${url}/admin/signin`, user)
                 .then((res) => {
                     const { token, expired } = res.data;
