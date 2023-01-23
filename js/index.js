@@ -19,12 +19,12 @@ const app = {
                 username,
                 password
             };
-            axios.post(`${url}/admin/signin`, user)
+            axios.post(`${url}/admin/signin`, this.user)
                 .then((res) => {
                     const { token, expired } = res.data;
                     document.cookie = `hexSchool = ${token};
                     expires = ${expired}`
-                    window.location = './product.html';
+                    window.location = '../product.html';
                 })
                 .catch((err) => {
                     console.log(err)

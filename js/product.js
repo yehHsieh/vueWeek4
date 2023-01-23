@@ -1,4 +1,5 @@
 const { createApp } = Vue;
+import pagination from "./pagination.js";
 
 let productModal = null;
 let delProductModal = null;
@@ -10,6 +11,7 @@ const app = {
             tempProduct: {
                 imagesUrl: [],
             },
+            page: {}
         }
     },
 
@@ -40,10 +42,11 @@ const app = {
                 delProductModal.show()
             }
         },
-        getData() {
-            axios.get(`https://vue3-course-api.hexschool.io/v2/api/${path}/admin/products/all`)
+        getData(page = 1) { //預設參數
+            axios.get(`https://vue3-course-api.hexschool.io/v2/api/${path}/admin/products/?page=${page}`)
                 .then((res) => {
                     this.products = res.data.products;
+                    this.page = res.data.pagination;
                 })
                 .catch((err) => {
                     alert(err.response.data.message);
@@ -74,7 +77,7 @@ const app = {
                     delProductModal.hide();
                     this.getData();
                 })
-                .catch((err) =>{
+                .catch((err) => {
                     alert(err.response.data.message);
                 })
         },
@@ -83,6 +86,10 @@ const app = {
             this.tempProduct.imagesUrl = [];
             this.tempProduct.imagesUrl.push('');
         },
+    },
+
+    components: {
+        pagination
     },
 
     mounted() {
