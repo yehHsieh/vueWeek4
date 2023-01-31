@@ -2,7 +2,6 @@ export default {
     props:['pages', 'getData'],
     template: `<nav aria-label="Page navigation example">
     <ul class="pagination">
-{{pages}}
           <li class="page-item" :class = "{disabled: !pages.has_pre}">
         <a class="page-link" href="#" aria-label="Previous" @click.prevent="getData(pages.current_page-1)">
           <span aria-hidden="true">&laquo;</span>

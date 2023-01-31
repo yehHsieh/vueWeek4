@@ -24,7 +24,7 @@ const app = {
                     const { token, expired } = res.data;
                     document.cookie = `hexSchool = ${token};
                     expires = ${expired}`
-                    window.location = '../product.html';
+                    window.location = './product.html';
                 })
                 .catch((err) => {
                     console.log(err)
