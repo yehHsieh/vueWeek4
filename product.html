@@ -71,7 +71,40 @@
         <!-- Modal -->
         <div id="productModal" ref="productModal" class="modal fade" tabindex="-1" aria-labelledby="productModalLabel"
             aria-hidden="true">
-            <div class="modal-dialog modal-xl">
+            <!-- 元件插入 -->
+            <product-modal :temp-product="tempProduct" :products="products" :is-new="isNew" :update-product="updateProduct"></product-modal>
+        </div>
+        <div id="delProductModal" ref="delProductModal" class="modal fade" tabindex="-1"
+            aria-labelledby="delProductModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content border-0">
+                    <div class="modal-header bg-danger text-white">
+                        <h5 id="delProductModalLabel" class="modal-title">
+                            <span>刪除產品</span>
+                        </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        是否刪除
+                        <strong class="text-danger"></strong> 商品(刪除後將無法恢復)。
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                            取消
+                        </button>
+                        <button type="button" class="btn btn-danger" @click="delProduct">
+                            確認刪除
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal -->
+    </div>
+
+    <!-- modal 元件 -->
+    <script type="text/x-template" id="product-modal-template">
+         <div class="modal-dialog modal-xl">
                 <div class="modal-content border-0">
                     <div class="modal-header bg-dark text-white">
                         <h5 id="productModalLabel" class="modal-title">
@@ -171,34 +204,7 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div id="delProductModal" ref="delProductModal" class="modal fade" tabindex="-1"
-            aria-labelledby="delProductModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content border-0">
-                    <div class="modal-header bg-danger text-white">
-                        <h5 id="delProductModalLabel" class="modal-title">
-                            <span>刪除產品</span>
-                        </h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        是否刪除
-                        <strong class="text-danger"></strong> 商品(刪除後將無法恢復)。
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
-                            取消
-                        </button>
-                        <button type="button" class="btn btn-danger" @click="delProduct">
-                            確認刪除
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Modal -->
-    </div>
+    </script>
 
     <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"

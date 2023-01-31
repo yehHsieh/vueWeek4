@@ -3,7 +3,7 @@ import pagination from "./pagination.js";
 
 let productModal = null;
 let delProductModal = null;
-const app = {
+const app = createApp({
     data() {
         return {
             products: [],
@@ -103,8 +103,12 @@ const app = {
         this.checkAdmin();
 
     }
-}
+})
 
-createApp(app)
-    .mount('#app');
+app.component('product-modal',{
+    props:['tempProduct','products','isNew','updateProduct'],
+    template:'#product-modal-template',
+})
+
+app.mount('#app');
 
